@@ -1,0 +1,37 @@
+
+.palette(@swatch1; @swatch2; @swatch3; @swatch4:#faf; @swatch5:#aaf; ...) {
+  @contrast: 50%;
+  @bg1: @swatch1;
+  @color1: contrast(@swatch1, darken(@swatch1, @contrast), lighten(@swatch1, @contrast));
+  @bg2: @swatch2;
+  @color2: contrast(@swatch2, darken(@swatch2, @contrast), lighten(@swatch2, @contrast));
+  @bg3: @swatch3;
+  @color3: contrast(@swatch3, darken(@swatch3, @contrast), lighten(@swatch3, @contrast));
+  @bg4: @swatch4;
+  @color4: contrast(@swatch4, darken(@swatch4, @contrast), lighten(@swatch4, @contrast));
+  @bg5: @swatch5;
+  @color5: contrast(@swatch5, darken(@swatch5, @contrast), lighten(@swatch5, @contrast));
+  
+  & {
+    color: @color1;
+    background: @bg1;
+  }
+  h1 { color: @color2; background: @bg2; }
+  p:first-child { color: @color3; background: @bg3; }
+  p:not(:first-child) { color: @color4; background: @bg4; }
+  h2 { color: @color5; background: @bg5; }
+  
+  & *:nth-child(5n+1) { color: @color1; background: @bg1; }
+  & *:nth-child(5n+2) { color: @color2; background: @bg2; }
+  & *:nth-child(5n+3) { color: @color3; background: @bg3; }
+  & *:nth-child(5n+4) { color: @color4; background: @bg4; }
+  & *:nth-child(5n+5) { color: @color5; background: @bg5; }
+}
+div.swatch { width:40px; height:40px; float:left; border: 1px solid black; }
+
+.watermelon { .usePalette(@watermelon); }
+.cheche { .usePalette(@cherryCheesecake); }
+
+@import '../palettes.less';
+
+
